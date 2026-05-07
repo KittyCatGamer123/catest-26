@@ -1,0 +1,67 @@
+[gd_scene format=3 uid="uid://c4cr7vq182i56"]
+
+[ext_resource type="Script" uid="uid://bkv8xwb1863cc" path="res://Scenes/Program/Program.gd" id="1_c00p7"]
+[ext_resource type="PackedScene" uid="uid://dewgk6ggruy2r" path="res://Scenes/Car/CarOrigin.tscn" id="2_0iuc5"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ekvup"]
+sky_top_color = Color(0, 0, 0, 1)
+sky_horizon_color = Color(0, 0, 0, 1)
+ground_bottom_color = Color(0, 0, 0, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_c00p7"]
+sky_material = SubResource("ProceduralSkyMaterial_ekvup")
+
+[sub_resource type="Environment" id="Environment_0iuc5"]
+background_mode = 2
+sky = SubResource("Sky_c00p7")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ekvup"]
+albedo_color = Color(0.103743516, 0.10374353, 0.103743516, 1)
+
+[node name="Program" type="Node3D" unique_id=850211409 node_paths=PackedStringArray("spawn_origin", "spawn_point", "active_lights_label")]
+script = ExtResource("1_c00p7")
+spawn_origin = NodePath("SpawnOrigin")
+spawn_point = NodePath("SpawnOrigin/SpawnPivot")
+active_lights_label = NodePath("CanvasLayer/ActiveLights")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=2095034702]
+environment = SubResource("Environment_0iuc5")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1329534547]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+light_color = Color(0.7372549, 1, 1, 1)
+light_energy = 0.01
+shadow_enabled = true
+
+[node name="Plane" type="CSGBox3D" parent="." unique_id=678809218]
+size = Vector3(500, 0.01, 500)
+material = SubResource("StandardMaterial3D_ekvup")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=421657155]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 180, 0)
+
+[node name="SpawnOrigin" type="Node3D" parent="." unique_id=1668882878]
+
+[node name="SpawnPivot" type="Node3D" parent="SpawnOrigin" unique_id=1604897010]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -100, 4, 0)
+
+[node name="CarObj" parent="." unique_id=25938028 instance=ExtResource("2_0iuc5")]
+
+[node name="CarObj2" parent="." unique_id=1733713962 instance=ExtResource("2_0iuc5")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1204783733]
+
+[node name="ActiveLights" type="RichTextLabel" parent="CanvasLayer" unique_id=863013834]
+offset_left = 16.0
+offset_top = 8.0
+offset_right = 401.0
+offset_bottom = 259.0
+theme_override_font_sizes/normal_font_size = 26
+bbcode_enabled = true
+text = "[color=#f54b42]Red[/color]        30
+[color=#f59942]Amber[/color]   30
+[color=#42f560]Green[/color]    30"

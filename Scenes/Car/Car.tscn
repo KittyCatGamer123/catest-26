@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://6g8iv6b1oa7i"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0iuc5"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c00p7"]
+
+[node name="CarModel" type="CSGBox3D" unique_id=1629250148]
+material_override = SubResource("StandardMaterial3D_0iuc5")
+size = Vector3(16, 3, 10)
+
+[node name="CSGPolygon3D" type="CSGPolygon3D" parent="." unique_id=1810861148]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4525726, 5.08)
+material_override = SubResource("StandardMaterial3D_c00p7")
+polygon = PackedVector2Array(-7, 0, -3, 4, 3, 4, 7, 0)
+depth = 10.0
+
+[node name="SpotLight3D" type="SpotLight3D" parent="." unique_id=2121037382]
+transform = Transform3D(-0.17364821, 0, -0.9848078, 0, 1, 0, 0.9848078, 0, -0.17364821, 7.6709366, 0, 3.7120824)
+light_color = Color(1, 1, 0.38039216, 1)
+light_energy = 10.0
+spot_range = 10.0
+spot_angle = 55.20763
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="." unique_id=28114709]
+transform = Transform3D(-0.17364821, 0, -0.9848078, 0, 1, 0, 0.9848078, 0, -0.17364821, 7.6712265, 0, -3.712)
+light_color = Color(1, 1, 0.38039216, 1)
+light_energy = 10.0
+spot_range = 10.0
+spot_angle = 55.20763
